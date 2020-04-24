@@ -159,7 +159,7 @@ Below is a sample `scss` snippet that can be used to get started.
 ## Example
 
 ```markdown
-`gif:whats-new-1.gif:Learn how to find out what's new in Google DevTools`
+`gif:dolphin.gif:caption=So long and thanks for all the fish`
 ```
 
 ```html
