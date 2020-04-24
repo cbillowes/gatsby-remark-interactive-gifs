@@ -7,8 +7,10 @@
     "build": "rimraf index.js && cross-env BABEL_ENV=production babel src --out-dir .",
     "format": "prettier --write ./{src,specs}/{,**}/*.js",
     "lint": "eslint ./{src,specs}/{,**}/*.js",
-    "test": "jest",
-    "test:verbose": "jest --verbose",
+    "test": "jest --colors",
+    "test:snapshots": "jest -u --colors",
+    "test:watch": "jest --watch --colors",
+    "test:verbose": "jest --verbose --colors",
     "test:coverage": "jest --coverage --runInBand --no-cache",
     "release": "yarn run build && ./node_modules/.bin/standard-version"
   },
@@ -37,7 +39,9 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "gif-frames": "^1.0.1"
+    "async-unist-util-visit": "^1.0.0",
+    "gif-frames": "^1.0.1",
+    "image-size": "^0.8.3"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
@@ -86,7 +90,7 @@
       "**/specs/**/*[.-][Ss]pec{,s}.{j,t}s{,x}"
     ],
     "rootDir": ".",
-    "verbose": false,
+    "verbose": true,
     "resetMocks": true,
     "resetModules": true,
     "collectCoverageFrom": [
