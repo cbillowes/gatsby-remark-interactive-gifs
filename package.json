@@ -36,6 +36,9 @@
     "plugin"
   ],
   "license": "MIT",
+  "dependencies": {
+    "gif-frames": "^1.0.1"
+  },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
     "@babel/core": "^7.9.0",
@@ -48,6 +51,7 @@
     "babel-eslint": "^10.1.0",
     "babel-jest": "^25.4.0",
     "babel-plugin-add-module-exports": "^1.0.2",
+    "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-filenames": "^1.3.2",
@@ -57,7 +61,6 @@
     "jest": "^25.4.0",
     "prettier": "^2.0.5",
     "remark": "^12.0.0",
-    "cross-env": "^7.0.2",
     "rimraf": "^3.0.2",
     "standard-version": "^7.1.0"
   },
