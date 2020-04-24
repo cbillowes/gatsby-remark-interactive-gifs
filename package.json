@@ -185,5 +185,11 @@
       "jest/valid-expect": "error",
       "prettier/prettier": "error"
     }
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": false,
+    "singleQuote": true
   }
 }

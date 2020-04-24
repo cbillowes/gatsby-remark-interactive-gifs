@@ -1,6 +1,6 @@
-const path = require("path")
-const fs = require("fs-extra")
-const gifFrames = require("gif-frames")
+const path = require(`path`)
+const fs = require(`fs-extra`)
+const gifFrames = require(`gif-frames`)
 
 let Reporter = console
 
@@ -17,6 +17,7 @@ let Reporter = console
  * Verifies if the path exists.
  * @param {string} option
  * @param {string} path
+ * @returns {Promise}
  */
 async function verifyPathExists(option, path) {
   return fs.pathExists(path, (err, exists) => {
@@ -29,8 +30,9 @@ async function verifyPathExists(option, path) {
 /**
  * Validate if all required paths exist.
  * @param {PluginOptions} pluginOptions
+ * @returns {boolean}
  */
-const validate = pluginOptions => {
+const validate = (pluginOptions) => {
   const verifies = [
     verifyPathExists(`pwd`, pluginOptions.pwd),
     verifyPathExists(`src`, pluginOptions.src),
@@ -43,8 +45,9 @@ const validate = pluginOptions => {
 /**
  * Gets that bas64 contents of a file.
  * @param {string} pathAndfilename
+ * @returns {string}
  */
-const getBase64 = pathAndfilename => {
+const getBase64 = (pathAndfilename) => {
   return Buffer.from(fs.readFileSync(pathAndfilename)).toString(`base64`)
 }
 
@@ -52,12 +55,13 @@ const getBase64 = pathAndfilename => {
  * Copy gifs, play and placeholder images from src to dest.
  * @param {string[]} files A list of all gif file names to be copied.
  * @param {PluginOptions} pluginOptions
+ * @returns {void}
  */
 const copyFiles = (files, pluginOptions) => {
-  let copy = files.map(filename => path.join(pluginOptions.src, filename))
+  let copy = files.map((filename) => path.join(pluginOptions.src, filename))
   copy.push(pluginOptions.play)
   copy.push(pluginOptions.placeholder)
-  copy.map(src => {
+  copy.map((src) => {
     const dest = path.join(pluginOptions.dest, path.basename(src))
     fs.copyFile(src, dest)
   })
@@ -67,17 +71,26 @@ const copyFiles = (files, pluginOptions) => {
  * Create the still image from a gif.
  * @param {string} file A file name for the gif that will generate a still image from src to dest.
  * @param {PluginOptions} pluginOptions
+ * @returns {void}
  */
 const createStill = (file, pluginOptions) => {
   const src = path.join(pluginOptions.src, file)
   const dest = path.join(pluginOptions.dest, `still-${path.basename(src)}`)
 
+  // @es-ignore
   gifFrames({ url: src, frames: 0 })
-    .then(frameData => {
+    // @ts-ignore
+    .then((frameData) => {
       frameData[0].getImage().pipe(fs.createWriteStream(dest))
     })
 }
 
+/**
+ * Gets the relative path of a file from its absolute path.
+ * @param {string} absolutePath
+ * @param {string} filePath
+ * @returns {string}
+ */
 const getRelativePath = (absolutePath, filePath) => {
   return path.relative(absolutePath, filePath).replace(/public/gi, ``)
 }
@@ -87,6 +100,7 @@ const getRelativePath = (absolutePath, filePath) => {
  * @param {string} filename
  * @param {string} base64
  * @param {PluginOptions} pluginOptions
+ * @returns {object}
  */
 const createNodeData = (filename, base64, pluginOptions) => {
   const src = path.join(pluginOptions.src, filename)
@@ -107,8 +121,14 @@ const createNodeData = (filename, base64, pluginOptions) => {
  * @param {string} base64
  * @param {Function} createNodeId
  * @param {Function} createContentDigest
+ * @returns {object}
  */
-const createNodeMeta = (filename, base64, createNodeId, createContentDigest) => {
+const createNodeMeta = (
+  filename,
+  base64,
+  createNodeId,
+  createContentDigest
+) => {
   return {
     id: createNodeId(`interactive-gif-${filename}`),
     parent: null,
@@ -118,48 +138,59 @@ const createNodeMeta = (filename, base64, createNodeId, createContentDigest) => 
       mediaType: `image/gif`,
       content: filename,
       contentDigest: createContentDigest(base64),
-    }
+    },
   }
 }
 
 /**
  * Creates the source node.
  * @param {string} filename Of the gif to be added to GraphQL.
- * @param {{ actions: object; createNodeId: Function; createContentDigest: Function; }} options
+ * @param {object} options
  * @param {PluginOptions} pluginOptions
+ * @returns {void}
  */
-const createSourceNode = (filename, { actions, createNodeId, createContentDigest }, pluginOptions) => {
+const createSourceNode = (filename, options, pluginOptions) => {
+  const { actions, createNodeId, createContentDigest } = options
   const { createNode } = actions
   const base64 = getBase64(path.join(pluginOptions.src, filename))
   const data = createNodeData(filename, base64, pluginOptions)
-  const meta = createNodeMeta(filename, base64, createNodeId, createContentDigest)
+  const meta = createNodeMeta(
+    filename,
+    base64,
+    createNodeId,
+    createContentDigest
+  )
   const node = Object.assign(data, meta)
   createNode(node)
 }
 
 /**
- * @param {{ actions: object; createNodeId: Function; createContentDigest: Function; reporter: object; }} options
+ * @param {{ reporter: object; }} options
  * @param {PluginOptions} pluginOptions
+ * @returns {void}
  */
 exports.sourceNodes = (options, pluginOptions) => {
   const { reporter } = options
   Reporter = reporter
 
   if (validate(pluginOptions)) {
-
-    fs.mkdirp(pluginOptions.dest, err => {
+    fs.mkdirp(pluginOptions.dest, (err) => {
       if (err)
-        Reporter.error(`Cannot make directory [dest]: ${pluginOptions.dest} -> ${err}`)
+        Reporter.error(
+          `Cannot make directory [dest]: ${pluginOptions.dest} -> ${err}`
+        )
     })
 
     fs.readdir(pluginOptions.src, (err, files) => {
       if (err) {
-        Reporter.error(`Cannot read directory [src]: ${pluginOptions.src} -> ${err}`)
+        Reporter.error(
+          `Cannot read directory [src]: ${pluginOptions.src} -> ${err}`
+        )
         return
       }
 
       copyFiles(files, pluginOptions)
-      files.forEach(filename => {
+      files.forEach((filename) => {
         createStill(filename, pluginOptions)
         createSourceNode(filename, options, pluginOptions)
       })

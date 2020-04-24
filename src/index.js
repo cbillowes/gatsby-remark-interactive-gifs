@@ -30,15 +30,17 @@ const img = require(`image-size`)
 
 /**
  * @param {string} value the inline code being parsed
+ * @returns {boolean}
  */
-const matchesProtocol = value => {
+const matchesProtocol = (value) => {
   return value.startsWith(`gif:`)
 }
 
 /**
  * @param {string} value the inline code being parsed
+ * @returns {object}
  */
-const parseProtocol = value => {
+const parseProtocol = (value) => {
   const params = value.split(`:`)
   const gif = params[1]
   const options = (params.length > 2 ? params[2] : ``).split(`;`)
@@ -49,7 +51,7 @@ const parseProtocol = value => {
     caption: ``,
     class: ``,
   }
-  options.forEach(opt => {
+  options.forEach((opt) => {
     const attribs = opt.split(`=`)
     protocol[attribs[0]] = attribs[1]
   })
@@ -59,15 +61,19 @@ const parseProtocol = value => {
 /**
  * @param {PluginOptions} pluginOptions
  * @param {object} params
+ * @returns {object}
  */
 const getNodeHtmlOptions = (pluginOptions, params) => {
+  const image = path.join(pluginOptions.dest, params.gif)
   let dimensions = { width: 0, height: 0 }
   let exists = false
 
   try {
-    dimensions = img.imageSize(path.join(pluginOptions.dest, params.gif))
+    dimensions = img.imageSize(image)
     exists = true
-  } catch (e) { }
+  } catch (e) {
+    console.warn(`${image} does not exist.`)
+  }
 
   return {
     exists: exists,
@@ -87,12 +93,13 @@ const getNodeHtmlOptions = (pluginOptions, params) => {
 /**
  * Generates the html to be embedded on the markdown page.
  * @param {Options} options
+ * @returns {string}
  */
-const getNodeHtml = options => {
+const getNodeHtml = (options) => {
   if (options.exists) {
     const gifElementId = options.id
     const stillElementId = `still-${options.id}`
-    const responsiveness = options.height / options.width * 100
+    const responsiveness = (options.height / options.width) * 100
     return `
       <div class="interactive-gif ${options.class}">
         <div id="${gifElementId}"
@@ -135,9 +142,10 @@ const getNodeHtml = options => {
 /**
  * @param {{ markdownAST: any;}} defaultProps
  * @param {PluginOptions} pluginOptions
+ * @returns {Promise}
  */
 module.exports = async ({ markdownAST }, pluginOptions) => {
-  return visit(markdownAST, `inlineCode`, node => {
+  return visit(markdownAST, `inlineCode`, (node) => {
     const value = node.value.toString()
     if (matchesProtocol(value)) {
       const params = parseProtocol(value)
@@ -145,7 +153,7 @@ module.exports = async ({ markdownAST }, pluginOptions) => {
       const html = getNodeHtml(options)
       node = Object.assign(node, {
         type: `html`,
-        value: html
+        value: html,
       })
     }
     return markdownAST
