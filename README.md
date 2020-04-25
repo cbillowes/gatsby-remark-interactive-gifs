@@ -41,7 +41,7 @@ gatsby-config.json:
         options: {
           pwd: `${__dirname}`,
           src: `${__dirname}/src/gifs`,
-          dest: `${__dirname}/static/gifs`,
+          dest: `${__dirname}/public/static/gifs`,
           play: `${__dirname}/src/images/play.gif`,
           placeholder: `${__dirname}/src/images/placeholder.gif`,
           relativePath: `/static/gifs`
