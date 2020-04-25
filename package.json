@@ -4,7 +4,7 @@
   "description": "A Gatsby plugin to add interactive animated gifs to markdown files.",
   "main": "index.js",
   "scripts": {
-    "build": "rimraf index.js && cross-env BABEL_ENV=production babel src --out-dir .",
+    "build": "rimraf gatsby-node.js index.js && cross-env BABEL_ENV=production babel src --out-dir .",
     "format": "prettier --write ./{src,specs}/{,**}/*.js",
     "lint": "eslint ./{src,specs}/{,**}/*.js",
     "test": "jest --colors",
