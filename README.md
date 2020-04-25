@@ -196,6 +196,10 @@ Below is a sample `scss` snippet that can be used to get started.
 > This is to prevent elements from jumping up when the gifs is loaded as a height cannot be
 > determined.
 
+## Troubleshooting
+
+Run a `gatsby clean` when you source nodes are no longer generated.
+
 ## Notes
 
 The order of this plugin only matters when you use it together with `gatsby-remark-prismjs`. Prism transforms code blocks and I kind
