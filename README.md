@@ -84,13 +84,13 @@ query MyQuery {
 Simply reference your gif file name in the gif protocol in order to embed the interactive gif.
 
 ```
-`gif:<dolphin>.gif`
+`gif:dolphin.gif`
 ```
 
 You can customize it by adding attributes. They are in no particular order and neither are mandatory.
 
 ```
-`gif:<dolphin>.gif:id=hitchikers-guide-to-the-galaxy;class=dolphin;caption=So long and thanks for all the fish`
+`gif:dolphin.gif:id=hitchikers-guide-to-the-galaxy;class=dolphin;caption=So long and thanks for all the fish`
 ```
 
 * `id` adds element ids' on the gif container and a `still-<id>` on the still container.
