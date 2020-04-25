@@ -195,6 +195,10 @@ Below is a sample `scss` snippet that can be used to get started.
 The order of this plugin only matters when you use it together with `gatsby-remark-prismjs`. Prism transforms code blocks and I kind
 of slapped a gif protocol in one which will confuse the daylight out of prism. Just reference this plugin somewhere above Prism.
 
+## Contribute
+
+Read the [guidelines](./CONTRIBUTE.md) to contribute to this plugin.
+
 ## License
 
 MIT, by Clarice Bouwer
