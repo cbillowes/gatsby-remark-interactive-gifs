@@ -36,17 +36,18 @@ gatsby-config.json:
   resolve: `gatsby-transformer-remark`,
   options: {
     plugins: [
-    {
-      resolve: `gatsby-remark-interactive-gifs`,
-      options: {
-        pwd: `${__dirname}`,
-        src: `${__dirname}/src/gifs`,
-        dest: `${__dirname}/static/gifs`,
-        play: `${__dirname}/src/images/play.gif`,
-        placeholder: `${__dirname}/src/images/placeholder.gif`,
-        relativePath: `/static/gifs`
+      {
+        resolve: `gatsby-remark-interactive-gifs`,
+        options: {
+          pwd: `${__dirname}`,
+          src: `${__dirname}/src/gifs`,
+          dest: `${__dirname}/static/gifs`,
+          play: `${__dirname}/src/images/play.gif`,
+          placeholder: `${__dirname}/src/images/placeholder.gif`,
+          relativePath: `/static/gifs`
+        },
       },
-    },
+    ]
   },
 }
 ```
