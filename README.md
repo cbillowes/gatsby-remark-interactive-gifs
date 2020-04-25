@@ -1,5 +1,9 @@
 # gatsby-remark-interactive-gifs
 
+[![Build Status](https://travis-ci.org/cbillowes/gatsby-remark-interactive-gifs.svg?branch=master)](https://travis-ci.org/cbillowes/gatsby-remark-interactive-gifs)
+[![codecov](https://codecov.io/gh/cbillowes/gatsby-remark-interactive-gifs/branch/master/graph/badge.svg)](https://codecov.io/gh/cbillowes/gatsby-remark-interactive-gifs)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 A Gatsby plugin to add interactive animated gifs to markdown files.
 
 ## Install
