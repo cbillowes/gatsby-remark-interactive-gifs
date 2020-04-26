@@ -38,33 +38,34 @@ Object {
   "type": "html",
   "value": "
       <div class=\\"interactive-gif \\">
-        <div id=\\"loading-dolphin.gif\\"
-             class=\\"loading\\" style=\\"background-size: cover; background-image: url('/static/gifs/still-dolphin.gif');\\">
-             <img class=\\"indicator\\" src=\\"/static/gifs/loading.gif\\" />
-        </div>
-        <div id=\\"dolphin.gif\\"
-             class=\\"gif-container\\"
-             style=\\"display: none; padding-top: 83.6%;\\"
-             onclick=\\"document.getElementById('dolphin.gif').style.display = 'none';
-                      document.getElementById('still-dolphin.gif').style.display = 'block';\\">
-          <img id=\\"image-dolphin.gif\\"
-               class=\\"gif\\"
-               data-original=\\"/static/gifs/dolphin.gif\\" />
-        </div>
+        <div>
+          <div id=\\"loading-dolphin.gif\\"
+              class=\\"loading\\" style=\\"max-height: 418px; background-size: cover; background-image: url('/static/gifs/still-dolphin.gif');\\">
+              <img class=\\"indicator\\" src=\\"/static/gifs/loading.gif\\" />
+          </div>
+          <div id=\\"dolphin.gif\\"
+              class=\\"gif-container\\"
+              style=\\"display: none; padding-top: 83.6%;\\"
+              onclick=\\"document.getElementById('dolphin.gif').style.display = 'none';
+                        document.getElementById('still-dolphin.gif').style.display = 'block';\\">
+            <img id=\\"image-dolphin.gif\\"
+                class=\\"gif\\"
+                data-original=\\"/static/gifs/dolphin.gif\\" />
+          </div>
 
-        <div id=\\"still-dolphin.gif\\"
-             class=\\"still-container\\"
-             onclick=\\"var gif = document.getElementById('image-dolphin.gif');
-                      gif.src = gif.dataset.original + '?t=' + new Date().getTime();
-                      document.getElementById('still-dolphin.gif').style.display = 'none';
-                      document.getElementById('dolphin.gif').style.display = 'block';\\">
-          <img id=\\"image-still-dolphin.gif\\"
-               class=\\"still\\"
-               src=\\"/static/gifs/still-dolphin.gif\\" />
-          <img class=\\"play\\"
-               src=\\"/static/gifs/play.gif\\" />
+          <div id=\\"still-dolphin.gif\\"
+              class=\\"still-container\\"
+              onclick=\\"var gif = document.getElementById('image-dolphin.gif');
+                        gif.src = gif.dataset.original + '?t=' + new Date().getTime();
+                        document.getElementById('still-dolphin.gif').style.display = 'none';
+                        document.getElementById('dolphin.gif').style.display = 'block';\\">
+            <img id=\\"image-still-dolphin.gif\\"
+                class=\\"still\\"
+                src=\\"/static/gifs/still-dolphin.gif\\" />
+            <img class=\\"play\\"
+                src=\\"/static/gifs/play.gif\\" />
+          </div>
         </div>
-
         <div class=\\"caption\\"></div>
       </div>
     ",
@@ -89,33 +90,34 @@ Object {
   "type": "html",
   "value": "
       <div class=\\"interactive-gif \\">
-        <div id=\\"loading-dolphin.gif\\"
-             class=\\"loading\\" style=\\"background-size: cover; background-image: url('/static/gifs/still-dolphin.gif');\\">
-             <img class=\\"indicator\\" src=\\"/static/gifs/loading.gif\\" />
-        </div>
-        <div id=\\"dolphin.gif\\"
-             class=\\"gif-container\\"
-             style=\\"display: none; padding-top: 83.6%;\\"
-             onclick=\\"document.getElementById('dolphin.gif').style.display = 'none';
-                      document.getElementById('still-dolphin.gif').style.display = 'block';\\">
-          <img id=\\"image-dolphin.gif\\"
-               class=\\"gif\\"
-               data-original=\\"/static/gifs/dolphin.gif\\" />
-        </div>
+        <div>
+          <div id=\\"loading-dolphin.gif\\"
+              class=\\"loading\\" style=\\"max-height: 418px; background-size: cover; background-image: url('/static/gifs/still-dolphin.gif');\\">
+              <img class=\\"indicator\\" src=\\"/static/gifs/loading.gif\\" />
+          </div>
+          <div id=\\"dolphin.gif\\"
+              class=\\"gif-container\\"
+              style=\\"display: none; padding-top: 83.6%;\\"
+              onclick=\\"document.getElementById('dolphin.gif').style.display = 'none';
+                        document.getElementById('still-dolphin.gif').style.display = 'block';\\">
+            <img id=\\"image-dolphin.gif\\"
+                class=\\"gif\\"
+                data-original=\\"/static/gifs/dolphin.gif\\" />
+          </div>
 
-        <div id=\\"still-dolphin.gif\\"
-             class=\\"still-container\\"
-             onclick=\\"var gif = document.getElementById('image-dolphin.gif');
-                      gif.src = gif.dataset.original + '?t=' + new Date().getTime();
-                      document.getElementById('still-dolphin.gif').style.display = 'none';
-                      document.getElementById('dolphin.gif').style.display = 'block';\\">
-          <img id=\\"image-still-dolphin.gif\\"
-               class=\\"still\\"
-               src=\\"/static/gifs/still-dolphin.gif\\" />
-          <img class=\\"play\\"
-               src=\\"/static/gifs/play.gif\\" />
+          <div id=\\"still-dolphin.gif\\"
+              class=\\"still-container\\"
+              onclick=\\"var gif = document.getElementById('image-dolphin.gif');
+                        gif.src = gif.dataset.original + '?t=' + new Date().getTime();
+                        document.getElementById('still-dolphin.gif').style.display = 'none';
+                        document.getElementById('dolphin.gif').style.display = 'block';\\">
+            <img id=\\"image-still-dolphin.gif\\"
+                class=\\"still\\"
+                src=\\"/static/gifs/still-dolphin.gif\\" />
+            <img class=\\"play\\"
+                src=\\"/static/gifs/play.gif\\" />
+          </div>
         </div>
-
         <div class=\\"caption\\">So long and thanks for all the fish</div>
       </div>
     ",
@@ -140,33 +142,34 @@ Object {
   "type": "html",
   "value": "
       <div class=\\"interactive-gif do-not-stretch-me\\">
-        <div id=\\"loading-dolphin.gif\\"
-             class=\\"loading\\" style=\\"background-size: cover; background-image: url('/static/gifs/still-dolphin.gif');\\">
-             <img class=\\"indicator\\" src=\\"/static/gifs/loading.gif\\" />
-        </div>
-        <div id=\\"dolphin.gif\\"
-             class=\\"gif-container\\"
-             style=\\"display: none; padding-top: 83.6%;\\"
-             onclick=\\"document.getElementById('dolphin.gif').style.display = 'none';
-                      document.getElementById('still-dolphin.gif').style.display = 'block';\\">
-          <img id=\\"image-dolphin.gif\\"
-               class=\\"gif\\"
-               data-original=\\"/static/gifs/dolphin.gif\\" />
-        </div>
+        <div>
+          <div id=\\"loading-dolphin.gif\\"
+              class=\\"loading\\" style=\\"max-height: 418px; background-size: cover; background-image: url('/static/gifs/still-dolphin.gif');\\">
+              <img class=\\"indicator\\" src=\\"/static/gifs/loading.gif\\" />
+          </div>
+          <div id=\\"dolphin.gif\\"
+              class=\\"gif-container\\"
+              style=\\"display: none; padding-top: 83.6%;\\"
+              onclick=\\"document.getElementById('dolphin.gif').style.display = 'none';
+                        document.getElementById('still-dolphin.gif').style.display = 'block';\\">
+            <img id=\\"image-dolphin.gif\\"
+                class=\\"gif\\"
+                data-original=\\"/static/gifs/dolphin.gif\\" />
+          </div>
 
-        <div id=\\"still-dolphin.gif\\"
-             class=\\"still-container\\"
-             onclick=\\"var gif = document.getElementById('image-dolphin.gif');
-                      gif.src = gif.dataset.original + '?t=' + new Date().getTime();
-                      document.getElementById('still-dolphin.gif').style.display = 'none';
-                      document.getElementById('dolphin.gif').style.display = 'block';\\">
-          <img id=\\"image-still-dolphin.gif\\"
-               class=\\"still\\"
-               src=\\"/static/gifs/still-dolphin.gif\\" />
-          <img class=\\"play\\"
-               src=\\"/static/gifs/play.gif\\" />
+          <div id=\\"still-dolphin.gif\\"
+              class=\\"still-container\\"
+              onclick=\\"var gif = document.getElementById('image-dolphin.gif');
+                        gif.src = gif.dataset.original + '?t=' + new Date().getTime();
+                        document.getElementById('still-dolphin.gif').style.display = 'none';
+                        document.getElementById('dolphin.gif').style.display = 'block';\\">
+            <img id=\\"image-still-dolphin.gif\\"
+                class=\\"still\\"
+                src=\\"/static/gifs/still-dolphin.gif\\" />
+            <img class=\\"play\\"
+                src=\\"/static/gifs/play.gif\\" />
+          </div>
         </div>
-
         <div class=\\"caption\\"></div>
       </div>
     ",
@@ -191,33 +194,34 @@ Object {
   "type": "html",
   "value": "
       <div class=\\"interactive-gif \\">
-        <div id=\\"loading-i-am-a-dolphin\\"
-             class=\\"loading\\" style=\\"background-size: cover; background-image: url('/static/gifs/still-dolphin.gif');\\">
-             <img class=\\"indicator\\" src=\\"/static/gifs/loading.gif\\" />
-        </div>
-        <div id=\\"i-am-a-dolphin\\"
-             class=\\"gif-container\\"
-             style=\\"display: none; padding-top: 83.6%;\\"
-             onclick=\\"document.getElementById('i-am-a-dolphin').style.display = 'none';
-                      document.getElementById('still-i-am-a-dolphin').style.display = 'block';\\">
-          <img id=\\"image-i-am-a-dolphin\\"
-               class=\\"gif\\"
-               data-original=\\"/static/gifs/dolphin.gif\\" />
-        </div>
+        <div>
+          <div id=\\"loading-i-am-a-dolphin\\"
+              class=\\"loading\\" style=\\"max-height: 418px; background-size: cover; background-image: url('/static/gifs/still-dolphin.gif');\\">
+              <img class=\\"indicator\\" src=\\"/static/gifs/loading.gif\\" />
+          </div>
+          <div id=\\"i-am-a-dolphin\\"
+              class=\\"gif-container\\"
+              style=\\"display: none; padding-top: 83.6%;\\"
+              onclick=\\"document.getElementById('i-am-a-dolphin').style.display = 'none';
+                        document.getElementById('still-i-am-a-dolphin').style.display = 'block';\\">
+            <img id=\\"image-i-am-a-dolphin\\"
+                class=\\"gif\\"
+                data-original=\\"/static/gifs/dolphin.gif\\" />
+          </div>
 
-        <div id=\\"still-i-am-a-dolphin\\"
-             class=\\"still-container\\"
-             onclick=\\"var gif = document.getElementById('image-i-am-a-dolphin');
-                      gif.src = gif.dataset.original + '?t=' + new Date().getTime();
-                      document.getElementById('still-i-am-a-dolphin').style.display = 'none';
-                      document.getElementById('i-am-a-dolphin').style.display = 'block';\\">
-          <img id=\\"image-still-i-am-a-dolphin\\"
-               class=\\"still\\"
-               src=\\"/static/gifs/still-dolphin.gif\\" />
-          <img class=\\"play\\"
-               src=\\"/static/gifs/play.gif\\" />
+          <div id=\\"still-i-am-a-dolphin\\"
+              class=\\"still-container\\"
+              onclick=\\"var gif = document.getElementById('image-i-am-a-dolphin');
+                        gif.src = gif.dataset.original + '?t=' + new Date().getTime();
+                        document.getElementById('still-i-am-a-dolphin').style.display = 'none';
+                        document.getElementById('i-am-a-dolphin').style.display = 'block';\\">
+            <img id=\\"image-still-i-am-a-dolphin\\"
+                class=\\"still\\"
+                src=\\"/static/gifs/still-dolphin.gif\\" />
+            <img class=\\"play\\"
+                src=\\"/static/gifs/play.gif\\" />
+          </div>
         </div>
-
         <div class=\\"caption\\"></div>
       </div>
     ",
@@ -242,33 +246,34 @@ Object {
   "type": "html",
   "value": "
       <div class=\\"interactive-gif do-not-stretch-me\\">
-        <div id=\\"loading-am-i-a-fishy\\"
-             class=\\"loading\\" style=\\"background-size: cover; background-image: url('/static/gifs/still-dolphin.gif');\\">
-             <img class=\\"indicator\\" src=\\"/static/gifs/loading.gif\\" />
-        </div>
-        <div id=\\"am-i-a-fishy\\"
-             class=\\"gif-container\\"
-             style=\\"display: none; padding-top: 83.6%;\\"
-             onclick=\\"document.getElementById('am-i-a-fishy').style.display = 'none';
-                      document.getElementById('still-am-i-a-fishy').style.display = 'block';\\">
-          <img id=\\"image-am-i-a-fishy\\"
-               class=\\"gif\\"
-               data-original=\\"/static/gifs/dolphin.gif\\" />
-        </div>
+        <div>
+          <div id=\\"loading-am-i-a-fishy\\"
+              class=\\"loading\\" style=\\"max-height: 418px; background-size: cover; background-image: url('/static/gifs/still-dolphin.gif');\\">
+              <img class=\\"indicator\\" src=\\"/static/gifs/loading.gif\\" />
+          </div>
+          <div id=\\"am-i-a-fishy\\"
+              class=\\"gif-container\\"
+              style=\\"display: none; padding-top: 83.6%;\\"
+              onclick=\\"document.getElementById('am-i-a-fishy').style.display = 'none';
+                        document.getElementById('still-am-i-a-fishy').style.display = 'block';\\">
+            <img id=\\"image-am-i-a-fishy\\"
+                class=\\"gif\\"
+                data-original=\\"/static/gifs/dolphin.gif\\" />
+          </div>
 
-        <div id=\\"still-am-i-a-fishy\\"
-             class=\\"still-container\\"
-             onclick=\\"var gif = document.getElementById('image-am-i-a-fishy');
-                      gif.src = gif.dataset.original + '?t=' + new Date().getTime();
-                      document.getElementById('still-am-i-a-fishy').style.display = 'none';
-                      document.getElementById('am-i-a-fishy').style.display = 'block';\\">
-          <img id=\\"image-still-am-i-a-fishy\\"
-               class=\\"still\\"
-               src=\\"/static/gifs/still-dolphin.gif\\" />
-          <img class=\\"play\\"
-               src=\\"/static/gifs/play.gif\\" />
+          <div id=\\"still-am-i-a-fishy\\"
+              class=\\"still-container\\"
+              onclick=\\"var gif = document.getElementById('image-am-i-a-fishy');
+                        gif.src = gif.dataset.original + '?t=' + new Date().getTime();
+                        document.getElementById('still-am-i-a-fishy').style.display = 'none';
+                        document.getElementById('am-i-a-fishy').style.display = 'block';\\">
+            <img id=\\"image-still-am-i-a-fishy\\"
+                class=\\"still\\"
+                src=\\"/static/gifs/still-dolphin.gif\\" />
+            <img class=\\"play\\"
+                src=\\"/static/gifs/play.gif\\" />
+          </div>
         </div>
-
         <div class=\\"caption\\">So long and thanks for all the fish</div>
       </div>
     ",

@@ -103,33 +103,34 @@ const getNodeHtml = (options) => {
     const responsiveness = (options.height / options.width) * 100
     return `
       <div class="interactive-gif ${options.class}">
-        <div id="loading-${gifElementId}"
-             class="loading" style="background-size: cover; background-image: url('${options.relativePath}/${options.still}');">
-             <img class="indicator" src="${options.relativePath}/${options.loading}" />
-        </div>
-        <div id="${gifElementId}"
-             class="gif-container"
-             style="display: none; padding-top: ${responsiveness}%;"
-             onclick="document.getElementById('${gifElementId}').style.display = 'none';
-                      document.getElementById('${stillElementId}').style.display = 'block';">
-          <img id="image-${gifElementId}"
-               class="gif"
-               data-original="${options.relativePath}/${options.gif}" />
-        </div>
+        <div>
+          <div id="loading-${gifElementId}"
+              class="loading" style="max-height: ${options.height}px; background-size: cover; background-image: url('${options.relativePath}/${options.still}');">
+              <img class="indicator" src="${options.relativePath}/${options.loading}" />
+          </div>
+          <div id="${gifElementId}"
+              class="gif-container"
+              style="display: none; padding-top: ${responsiveness}%;"
+              onclick="document.getElementById('${gifElementId}').style.display = 'none';
+                        document.getElementById('${stillElementId}').style.display = 'block';">
+            <img id="image-${gifElementId}"
+                class="gif"
+                data-original="${options.relativePath}/${options.gif}" />
+          </div>
 
-        <div id="${stillElementId}"
-             class="still-container"
-             onclick="var gif = document.getElementById('image-${gifElementId}');
-                      gif.src = gif.dataset.original + '?t=' + new Date().getTime();
-                      document.getElementById('${stillElementId}').style.display = 'none';
-                      document.getElementById('${gifElementId}').style.display = 'block';">
-          <img id="image-${stillElementId}"
-               class="still"
-               src="${options.relativePath}/${options.still}" />
-          <img class="play"
-               src="${options.relativePath}/${options.play}" />
+          <div id="${stillElementId}"
+              class="still-container"
+              onclick="var gif = document.getElementById('image-${gifElementId}');
+                        gif.src = gif.dataset.original + '?t=' + new Date().getTime();
+                        document.getElementById('${stillElementId}').style.display = 'none';
+                        document.getElementById('${gifElementId}').style.display = 'block';">
+            <img id="image-${stillElementId}"
+                class="still"
+                src="${options.relativePath}/${options.still}" />
+            <img class="play"
+                src="${options.relativePath}/${options.play}" />
+          </div>
         </div>
-
         <div class="caption">${options.caption ? options.caption : ``}</div>
       </div>
     `

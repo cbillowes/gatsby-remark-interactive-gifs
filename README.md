@@ -192,29 +192,30 @@ You can convert the above CSS to
 
 ```html
 <div class="interactive-gif ">
-  <div id="loading-nyancat.gif"
-       class="loading"
-       style="background-size: cover; background-image: url('/static/gifs/still-nyancat.gif');">
-    <img class="indicator" src="/static/gifs/loading.gif">
-  </div>
-  <div id="nyancat.gif"
-       class="gif-container" style="display: none; padding-top: 56.2852%;"
-       onclick="document.getElementById('nyancat.gif').style.display = 'none';
-                document.getElementById('still-nyancat.gif').style.display = 'block';">
-    <img id="image-nyancat.gif" class="gif"
-         data-original="/static/gifs/nyancat.gif"
-         src="/static/gifs/nyancat.gif?t=1587868309981">
-  </div>
+  <div>
+    <div id="loading-nyancat.gif"
+         class="loading"
+         style="max-height: 300px; background-size: cover; background-image: url('/static/gifs/still-nyancat.gif');">
+      <img class="indicator" src="/static/gifs/loading.gif">
+    </div>
+    <div id="nyancat.gif"
+         class="gif-container"
+         style="display: none; padding-top: 56.28517823639775%;"
+         onclick="document.getElementById('nyancat.gif').style.display = 'none';
+                  document.getElementById('still-nyancat.gif').style.display = 'block';">
+      <img id="image-nyancat.gif" class="gif" data-original="/static/gifs/nyancat.gif">
+    </div>
 
-  <div id="still-nyancat.gif" class="still-container"
-       onclick="var gif = document.getElementById('image-nyancat.gif');
-                gif.src = gif.dataset.original + '?t=' + new Date().getTime();
-                document.getElementById('still-nyancat.gif').style.display = 'none';
-                document.getElementById('nyancat.gif').style.display = 'block';" style="display: block;">
-    <img id="image-still-nyancat.gif" class="still" src="/static/gifs/still-nyancat.gif">
-    <img class="play" src="/static/gifs/play.gif">
+    <div id="still-nyancat.gif"
+         class="still-container"
+         onclick="var gif = document.getElementById('image-nyancat.gif');
+                  gif.src = gif.dataset.original + '?t=' + new Date().getTime();
+                  document.getElementById('still-nyancat.gif').style.display = 'none';
+                  document.getElementById('nyancat.gif').style.display = 'block';">
+      <img id="image-still-nyancat.gif" class="still" src="/static/gifs/still-nyancat.gif">
+      <img class="play" src="/static/gifs/play.gif">
+    </div>
   </div>
-
   <div class="caption">Nyanyanyanyanyanyanya</div>
 </div>
 ```
