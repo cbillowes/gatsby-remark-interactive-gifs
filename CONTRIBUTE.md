@@ -13,3 +13,15 @@ If you have a cool idea, feature or bug you want to add then fork, clone and cre
 * **Consistent:** Stick to existing conventions and run your code through `npm run lint` and fix accordingly.
 
 * **Confidence:** Test.
+
+## Release
+
+* `npm release`
+
+* Update CHANGELOG.md
+
+* Add and commit: `Bump: vX.X.X`
+
+* `git push -u origin --tags`
+
+* `npm publish`
