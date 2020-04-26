@@ -75,11 +75,13 @@ query MyQuery {
   allInteractiveGif {
     edges {
       node {
+        height
+        absolutePath
+        base64
         relativePath
         sourcePath
         stillRelativePath
-        absolutePath
-        base64
+        width
       }
     }
   }

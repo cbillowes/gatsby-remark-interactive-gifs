@@ -1,6 +1,7 @@
 const path = require(`path`)
 const fs = require(`fs-extra`)
 const gifFrames = require(`gif-frames`)
+const sizeOf = require(`image-size`)
 
 let Reporter = console
 
@@ -108,13 +109,16 @@ const createNodeData = (filename, base64, pluginOptions) => {
   const src = path.join(pluginOptions.src, filename)
   const dest = path.join(pluginOptions.dest, filename)
   const still = path.join(pluginOptions.dest, `still-${filename}`)
+  const { width, height } = sizeOf.imageSize(src)
   const root = pluginOptions.root
   return {
     absolutePath: dest,
     sourcePath: src,
     relativePath: getRelativePath(root, dest),
     stillRelativePath: getRelativePath(root, still),
-    base64: base64,
+    base64,
+    width,
+    height,
   }
 }
 
