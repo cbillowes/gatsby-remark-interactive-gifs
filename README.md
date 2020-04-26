@@ -39,7 +39,7 @@ gatsby-config.json:
       {
         resolve: `gatsby-remark-interactive-gifs`,
         options: {
-          pwd: `${__dirname}`,
+          root: `${__dirname}`,
           src: `${__dirname}/src/gifs`,
           dest: `${__dirname}/public/static/gifs`,
           play: `${__dirname}/src/images/play.gif`,
@@ -52,7 +52,7 @@ gatsby-config.json:
 }
 ```
 
-* `pwd` - The absolute path to your project's working directory.
+* `root` - The root of your project.
 * `src` - Where all the gifs you want processed are stored. Absolute path.
 * `dest` - A path in `public` where your gifs are stored. Absolute path.
 * `play` - An image to indicate that the gif can be interacted with. Absolute path.

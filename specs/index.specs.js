@@ -13,7 +13,7 @@ const plugin = require(`../src/index`)
 const getNodeContent = (node) => node.children[0].children[0]
 
 const options = {
-  pwd: `${__dirname}`,
+  root: `${__dirname}`,
   relativePath: `/static/gifs`,
   src: `${__dirname}/images`,
   dest: `${__dirname}/images`,

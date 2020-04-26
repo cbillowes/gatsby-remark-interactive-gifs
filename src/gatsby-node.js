@@ -6,7 +6,7 @@ let Reporter = console
 
 /**
  * @typedef {object} PluginOptions
- * @property {string} pwd Project's working directory. Absolute path.
+ * @property {string} root Project's working directory. Absolute path.
  * @property {string} src Where all the interactive gifs are stored. Absolute path.
  * @property {string} dest A directory in public where the gifs should be copied to. Absolute path.
  * @property {string} play The image that indicates that the gif can be interacted with. Absolute path.
@@ -34,7 +34,7 @@ async function verifyPathExists(option, path) {
  */
 const validate = (pluginOptions) => {
   const verifies = [
-    verifyPathExists(`pwd`, pluginOptions.pwd),
+    verifyPathExists(`root`, pluginOptions.root),
     verifyPathExists(`src`, pluginOptions.src),
     verifyPathExists(`play`, pluginOptions.play),
     verifyPathExists(`placeholder`, pluginOptions.placeholder),
@@ -106,12 +106,12 @@ const createNodeData = (filename, base64, pluginOptions) => {
   const src = path.join(pluginOptions.src, filename)
   const dest = path.join(pluginOptions.dest, filename)
   const still = path.join(pluginOptions.dest, `still-${filename}`)
-  const pwd = pluginOptions.pwd
+  const root = pluginOptions.root
   return {
     absolutePath: dest,
     sourcePath: src,
-    relativePath: getRelativePath(pwd, dest),
-    stillRelativePath: getRelativePath(pwd, still),
+    relativePath: getRelativePath(root, dest),
+    stillRelativePath: getRelativePath(root, still),
     base64: base64,
   }
 }
