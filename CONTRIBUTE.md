@@ -18,8 +18,6 @@ If you have a cool idea, feature or bug you want to add then fork, clone and cre
 
 Steps to releasing a new package: *(notes for future me)*
 
-* Update the CHANGELOG.md file with each change. Changes must be human readable and understandable.
-
 * `npm run release` to bump the version in package.json, create a release commit and tag it with that version number.
 
 * `git push -u origin --tags` to push the latest changes with the newly created tag.
