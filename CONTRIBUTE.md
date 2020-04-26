@@ -16,10 +16,12 @@ If you have a cool idea, feature or bug you want to add then fork, clone and cre
 
 ## Release
 
-* `npm run release`
+Steps to releasing a new package: *(notes for future me)*
 
-* Update CHANGELOG.md and amend the release commit.
+* Update the CHANGELOG.md file with each change. Changes must be human readable and understandable.
 
-* `git push -u origin --tags`
+* `npm run release` to bump the version in package.json, create a release commit and tag it with that version number.
 
-* `npm publish`
+* `git push -u origin --tags` to push the latest changes with the newly created tag.
+
+* `npm publish` latest version of the package to the world.
