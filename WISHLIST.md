@@ -2,7 +2,7 @@
 
 ✅ **Breaking change:** use `root` instead of pwd as pwd is commonly referred to as password.
 
-⭕ Markdown: Get rid of background flicker. Perhaps create a background-image of the still on the gif container. Add a loading indicator.
+✅ Markdown: Get rid of background flicker. Perhaps create a background-image of the still on the gif container. Add a loading indicator.
 
 ⭕ GraphQL: Add the caption. Can be used as the title of an `img` tag.
 

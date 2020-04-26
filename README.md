@@ -26,6 +26,9 @@ A Gatsby plugin to add interactive animated gifs to markdown files.
 > * Optimize your gifs!
 > * For imagery, I use icons from [www.flaticon.com](https://www.flaticon.com/) and make sure I attribute them.
 
+## Requirements
+
+This plugin requires node >=10.
 
 ## Configure
 

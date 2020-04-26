@@ -11,6 +11,7 @@ let Reporter = console
  * @property {string} dest A directory in public where the gifs should be copied to. Absolute path.
  * @property {string} play The image that indicates that the gif can be interacted with. Absolute path.
  * @property {string} placeholder The image which shows when the gif is missing in action. Absolute path.
+ * @property {string} loading The image which shows when the gif is downloading. Absolute path.
  */
 
 /**
@@ -61,6 +62,7 @@ const copyFiles = (files, pluginOptions) => {
   let copy = files.map((filename) => path.join(pluginOptions.src, filename))
   copy.push(pluginOptions.play)
   copy.push(pluginOptions.placeholder)
+  copy.push(pluginOptions.loading)
   copy.map((src) => {
     const dest = path.join(pluginOptions.dest, path.basename(src))
     fs.copyFile(src, dest)

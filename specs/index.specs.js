@@ -19,6 +19,7 @@ const options = {
   dest: `${__dirname}/images`,
   play: `${__dirname}/images/play.gif`,
   placeholder: `${__dirname}/images/placeholder.gif`,
+  loading: `${__dirname}/images/loading.gif`,
 }
 
 describe(`gatsby-remark-interactive-gifs`, () => {

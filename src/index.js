@@ -7,6 +7,7 @@ const img = require(`image-size`)
  * @property {string} dest A path in public where your gifs are stored. Absolute path.
  * @property {string} play An image to indicate that the gif can be interacted with. Absolute path.
  * @property {string} placeholder An image to show when the gif is missing in action. Absolute path.
+ * @property {string} loading The image which shows when the gif is downloading. Absolute path.
  * @property {string} relativePath The relative path served to the public.
  */
 
@@ -18,6 +19,7 @@ const img = require(`image-size`)
  * @property {string} id? The element ID which can be set to ensure a unique gif is embedded.
  * @property {string} play? The play image file name.
  * @property {string} placeholder? The placeholder image file name.
+ * @property {string} loading? The loading image file name.
  * @property {string} gif? The gif file name.
  * @property {string} still? The still image file name.
  * @property {string} caption? The caption to be embedded.
@@ -79,6 +81,7 @@ const getNodeHtmlOptions = (pluginOptions, params) => {
     id: params.id,
     play: path.basename(pluginOptions.play),
     placeholder: path.basename(pluginOptions.placeholder),
+    loading: path.basename(pluginOptions.loading),
     gif: params.gif,
     still: `still-${params.gif}`,
     caption: params.caption,
@@ -100,6 +103,10 @@ const getNodeHtml = (options) => {
     const responsiveness = (options.height / options.width) * 100
     return `
       <div class="interactive-gif ${options.class}">
+        <div id="loading-${gifElementId}"
+             class="loading">
+             <img class="indicator" src="${options.relativePath}/${options.loading}" />
+        </div>
         <div id="${gifElementId}"
              class="gif-container"
              style="display: none; padding-top: ${responsiveness}%;"
