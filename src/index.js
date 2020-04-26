@@ -4,8 +4,6 @@ const img = require(`image-size`)
 
 /**
  * @typedef {object} PluginOptions
- * @property {string} root The root of your project.
- * @property {string} src Where all the gifs you want processed are stored. Absolute path.
  * @property {string} dest A path in public where your gifs are stored. Absolute path.
  * @property {string} play An image to indicate that the gif can be interacted with. Absolute path.
  * @property {string} placeholder An image to show when the gif is missing in action. Absolute path.
