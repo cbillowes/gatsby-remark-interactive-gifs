@@ -16,11 +16,9 @@ If you have a cool idea, feature or bug you want to add then fork, clone and cre
 
 ## Release
 
-* `npm release`
+* `npm run release`
 
-* Update CHANGELOG.md
-
-* Add and commit: `Bump: vX.X.X`
+* Update CHANGELOG.md and amend the release commit.
 
 * `git push -u origin --tags`
 
