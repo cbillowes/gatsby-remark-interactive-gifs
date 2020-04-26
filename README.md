@@ -19,12 +19,14 @@ A Gatsby plugin to add interactive animated gifs to markdown files.
 * Click events will toggle between play and playing.
 
 > **Gotchas:** A fresh copy needs to be downloaded to play a gif from the beginning.
-> * There is no loading mechanism which could be trouble for larger gifs.
-> * Any caching strategies are bypassed.
+> * All caching strategies are bypassed.
+> * This plugin is designed for images that fill a container. Custom styling is required to
+>   cater for gifs not of 100% width.
 
 > **Tips:**
 > * Optimize your gifs!
 > * For imagery, I use icons from [www.flaticon.com](https://www.flaticon.com/) and make sure I attribute them.
+> * For spinners/loading indicators, I use [loading.io](https://loading.io/).
 
 ## Requirements
 
@@ -47,6 +49,7 @@ gatsby-config.json:
           dest: `${__dirname}/public/static/gifs`,
           play: `${__dirname}/src/images/play.gif`,
           placeholder: `${__dirname}/src/images/placeholder.gif`,
+          loading: `${__dirname}/src/images/loading.gif`,
           relativePath: `/static/gifs`
         },
       },
@@ -60,7 +63,8 @@ gatsby-config.json:
 * `dest` - A path in `public` where your gifs are stored. Absolute path.
 * `play` - An image to indicate that the gif can be interacted with. Absolute path.
 * `placeholder` - An image to show when the gif is missing in action. Absolute path.
-* `relativePath` - The relative path served to the public.
+* `loading` - An image which shows when the gif is downloading. Absolute path.
+* `relativePath` - The relative path served from `public/`.
 
 ## How to query
 
@@ -96,102 +100,122 @@ You can customize it by adding attributes. They are in no particular order and n
 `gif:dolphin.gif:id=hitchikers-guide-to-the-galaxy;class=dolphin;caption=So long and thanks for all the fish`
 ```
 
-* `id` adds element ids' on the gif container and a `still-<id>` on the still container.
+* `id` adds element an ids on the gif container and a `still-<id>` on the still container.
 * `class` adds a class to the parent interactive gif container.
 * `caption` adds text to the bottom of the image.
 
 ## How to style
 
-Below is a sample `scss` snippet that can be used to get started.
+Below is sample styling in `CSS` to get you started.
 
-```scss
+```css
 .interactive-gif {
+  position: relative;
+}
 
-  .placeholder {
-    cursor: default;
-    opacity: .5;
-    text-align: center;
+.interactive-gif .loading {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
 
-    img {
-      height: 150px;
-    }
-  }
+.interactive-gif .loading .indicator {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  background-color: white;
+  border-radius: 50%;
+  border: solid 20px #ad1f4f;
+}
 
-  .gif-container,
-  .still-container {
-    position: relative;
-    cursor: pointer;
-    line-height: 0;
-    font-size: 0;
-  }
+.interactive-gif .placeholder {
+  cursor: default;
+  opacity: 0.5;
+  text-align: center;
+}
 
-  .gif-container {
-    .gif {
-     //img
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translateX(-50%) translateY(-50%);
-    }
-  }
+.interactive-gif .placeholder img {
+  height: 150px;
+}
 
-  .still-container {
-    .still {
-      //img
-      width: 100%;
-      height: 100%;
-      margin: 0;
-      padding: 0;
-    }
+.interactive-gif .gif-container,
+.interactive-gif .still-container {
+  position: relative;
+  cursor: pointer;
+  line-height: 0;
+  font-size: 0;
+}
 
-    .play {
-      //img
-      filter: grayscale(100%);
-      width: 20%;
-      position: absolute;
-      opacity: .5;
-      left: 50%;
-      top: 50%;
-      transform: translateX(-50%) translateY(-50%);
-    }
-  }
+.interactive-gif .gif-container .gif {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
 
-  .caption {
-    font-size: 90%;
-    font-style: italic;
-  }
+.interactive-gif .still-container .still {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.interactive-gif .still-container .play {
+  filter: grayscale(100%);
+  width: 20%;
+  position: absolute;
+  opacity: 0.5;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+.interactive-gif .caption {
+  font-size: 90%;
+  font-style: italic;
 }
 ```
+
+You can convert the above CSS to
+[scss](https://jsonformatter.org/css-to-scss),
+[sass](https://jsonformatter.org/css-to-sass) or
+[less](https://jsonformatter.org/css-to-less).
 
 ## Example
 
 ```markdown
-`gif:dolphin.gif:caption=So long and thanks for all the fish`
+`gif:nyancat.gif:caption=Nyanyanyanyanyanyanya`
 ```
 
 ```html
-<div class="interactive-gif unadjusted">
-  <div id="dolphin.gif"
-       class="gif-container"
-       style="display: none; padding-top: 83.6%;"
-       onclick="document.getElementById('dolphin.gif').style.display = 'none';
-                document.getElementById('still-dolphin.gif').style.display = 'block';">
-    <img id="image-dolphin.gif" class="gif" data-original="/static/gifs/dolphin.gif">
+<div class="interactive-gif ">
+  <div id="loading-nyancat.gif"
+       class="loading"
+       style="background-size: cover; background-image: url('/static/gifs/still-nyancat.gif');">
+    <img class="indicator" src="/static/gifs/loading.gif">
+  </div>
+  <div id="nyancat.gif"
+       class="gif-container" style="display: none; padding-top: 56.2852%;"
+       onclick="document.getElementById('nyancat.gif').style.display = 'none';
+                document.getElementById('still-nyancat.gif').style.display = 'block';">
+    <img id="image-nyancat.gif" class="gif"
+         data-original="/static/gifs/nyancat.gif"
+         src="/static/gifs/nyancat.gif?t=1587868309981">
   </div>
 
-  <div id="still-dolphin.gif"
-       class="still-container"
-       onclick="var gif = document.getElementById('image-dolphin.gif');
+  <div id="still-nyancat.gif" class="still-container"
+       onclick="var gif = document.getElementById('image-nyancat.gif');
                 gif.src = gif.dataset.original + '?t=' + new Date().getTime();
-                document.getElementById('still-dolphin.gif').style.display = 'none';
-                document.getElementById('dolphin.gif').style.display = 'block';">
-    <img id="image-still-dolphin.gif" class="still" src="/static/gifs/still-dolphin.gif">
+                document.getElementById('still-nyancat.gif').style.display = 'none';
+                document.getElementById('nyancat.gif').style.display = 'block';" style="display: block;">
+    <img id="image-still-nyancat.gif" class="still" src="/static/gifs/still-nyancat.gif">
     <img class="play" src="/static/gifs/play.gif">
   </div>
 
-  <div class="caption">So long and thanks for all the fish.</div>
+  <div class="caption">Nyanyanyanyanyanyanya</div>
 </div>
 ```
 
@@ -201,7 +225,7 @@ Below is a sample `scss` snippet that can be used to get started.
 
 ## Troubleshooting
 
-Run a `gatsby clean` when you source nodes are no longer generated.
+Run a `gatsby clean` when your source nodes are no longer generated.
 
 ## Notes
 

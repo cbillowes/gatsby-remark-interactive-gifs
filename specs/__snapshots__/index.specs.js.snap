@@ -39,7 +39,7 @@ Object {
   "value": "
       <div class=\\"interactive-gif \\">
         <div id=\\"loading-dolphin.gif\\"
-             class=\\"loading\\">
+             class=\\"loading\\" style=\\"background-size: cover; background-image: url('/static/gifs/still-dolphin.gif');\\">
              <img class=\\"indicator\\" src=\\"/static/gifs/loading.gif\\" />
         </div>
         <div id=\\"dolphin.gif\\"
@@ -90,7 +90,7 @@ Object {
   "value": "
       <div class=\\"interactive-gif \\">
         <div id=\\"loading-dolphin.gif\\"
-             class=\\"loading\\">
+             class=\\"loading\\" style=\\"background-size: cover; background-image: url('/static/gifs/still-dolphin.gif');\\">
              <img class=\\"indicator\\" src=\\"/static/gifs/loading.gif\\" />
         </div>
         <div id=\\"dolphin.gif\\"
@@ -141,7 +141,7 @@ Object {
   "value": "
       <div class=\\"interactive-gif do-not-stretch-me\\">
         <div id=\\"loading-dolphin.gif\\"
-             class=\\"loading\\">
+             class=\\"loading\\" style=\\"background-size: cover; background-image: url('/static/gifs/still-dolphin.gif');\\">
              <img class=\\"indicator\\" src=\\"/static/gifs/loading.gif\\" />
         </div>
         <div id=\\"dolphin.gif\\"
@@ -192,7 +192,7 @@ Object {
   "value": "
       <div class=\\"interactive-gif \\">
         <div id=\\"loading-i-am-a-dolphin\\"
-             class=\\"loading\\">
+             class=\\"loading\\" style=\\"background-size: cover; background-image: url('/static/gifs/still-dolphin.gif');\\">
              <img class=\\"indicator\\" src=\\"/static/gifs/loading.gif\\" />
         </div>
         <div id=\\"i-am-a-dolphin\\"
@@ -243,7 +243,7 @@ Object {
   "value": "
       <div class=\\"interactive-gif do-not-stretch-me\\">
         <div id=\\"loading-am-i-a-fishy\\"
-             class=\\"loading\\">
+             class=\\"loading\\" style=\\"background-size: cover; background-image: url('/static/gifs/still-dolphin.gif');\\">
              <img class=\\"indicator\\" src=\\"/static/gifs/loading.gif\\" />
         </div>
         <div id=\\"am-i-a-fishy\\"

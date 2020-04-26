@@ -7,7 +7,7 @@ const img = require(`image-size`)
  * @property {string} dest A path in public where your gifs are stored. Absolute path.
  * @property {string} play An image to indicate that the gif can be interacted with. Absolute path.
  * @property {string} placeholder An image to show when the gif is missing in action. Absolute path.
- * @property {string} loading The image which shows when the gif is downloading. Absolute path.
+ * @property {string} loading An image which shows when the gif is downloading. Absolute path.
  * @property {string} relativePath The relative path served to the public.
  */
 
@@ -104,7 +104,7 @@ const getNodeHtml = (options) => {
     return `
       <div class="interactive-gif ${options.class}">
         <div id="loading-${gifElementId}"
-             class="loading">
+             class="loading" style="background-size: cover; background-image: url('${options.relativePath}/${options.still}');">
              <img class="indicator" src="${options.relativePath}/${options.loading}" />
         </div>
         <div id="${gifElementId}"
