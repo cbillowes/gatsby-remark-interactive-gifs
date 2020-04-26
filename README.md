@@ -111,73 +111,66 @@ You can customize it by adding attributes. They are in no particular order and n
 Below is sample styling in `CSS` to get you started.
 
 ```css
-.interactive-gif {
+.interactive-gif {}
+
+/* Responsive flicker-less display */
+.interactive-gif .embedded {
   position: relative;
-}
-
-.interactive-gif .loading {
-  position: absolute;
-  height: 100%;
   width: 100%;
+  height: auto;
 }
 
+.interactive-gif .loading,
+.interactive-gif .still-container,
+.interactive-gif .gif-container {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.interactive-gif .still,
+.interactive-gif .gif {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+/* Loading indicator */
 .interactive-gif .loading .indicator {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-50%) translateY(-50%);
-  background-color: white;
-  border-radius: 50%;
-  border: solid 20px #ad1f4f;
+  bottom: 0;
+  left: 0;
+  width: 80px;
+  filter: contrast(0.5);
 }
 
+/* Play button */
+.interactive-gif .still-container .play {
+  cursor: pointer;
+  filter: grayscale(100%);
+  width: 20%;
+  position: absolute;
+  opacity: 0.9;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-50%) translateY(-50%);
+}
+
+/* Text underneath the gif */
+.interactive-gif .caption {
+  font-size: 90%;
+  font-style: italic;
+}
+
+/* Image displayed when the gif cannot be found */
 .interactive-gif .placeholder {
-  cursor: default;
-  opacity: 0.5;
+  filter: grayscale(100%);
   text-align: center;
 }
 
 .interactive-gif .placeholder img {
-  height: 150px;
-}
-
-.interactive-gif .gif-container,
-.interactive-gif .still-container {
-  position: relative;
-  cursor: pointer;
-  line-height: 0;
-  font-size: 0;
-}
-
-.interactive-gif .gif-container .gif {
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-}
-
-.interactive-gif .still-container .still {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
-
-.interactive-gif .still-container .play {
-  filter: grayscale(100%);
-  width: 20%;
-  position: absolute;
-  opacity: 0.5;
-  left: 50%;
-  top: 50%;
-  transform: translateX(-50%) translateY(-50%);
-}
-
-.interactive-gif .caption {
-  font-size: 90%;
-  font-style: italic;
+  width: 200px;
 }
 ```
 
@@ -194,18 +187,22 @@ You can convert the above CSS to
 
 ```html
 <div class="interactive-gif ">
-  <div>
+  <div class="embedded"
+       style="padding-top: 56.28517823639775%">
     <div id="loading-nyancat.gif"
          class="loading"
-         style="max-height: 300px; background-size: cover; background-image: url('/static/gifs/still-nyancat.gif');">
+         style="background-size: cover; background-image: url('/static/gifs/still-nyancat.gif');">
       <img class="indicator" src="/static/gifs/loading.gif">
     </div>
     <div id="nyancat.gif"
          class="gif-container"
-         style="display: none; padding-top: 56.28517823639775%;"
+         style="display: block;"
          onclick="document.getElementById('nyancat.gif').style.display = 'none';
                   document.getElementById('still-nyancat.gif').style.display = 'block';">
-      <img id="image-nyancat.gif" class="gif" data-original="/static/gifs/nyancat.gif">
+      <img id="image-nyancat.gif"
+           class="gif"
+           data-original="/static/gifs/nyancat.gif"
+           src="/static/gifs/nyancat.gif?t=1587914555745">
     </div>
 
     <div id="still-nyancat.gif"
@@ -213,7 +210,7 @@ You can convert the above CSS to
          onclick="var gif = document.getElementById('image-nyancat.gif');
                   gif.src = gif.dataset.original + '?t=' + new Date().getTime();
                   document.getElementById('still-nyancat.gif').style.display = 'none';
-                  document.getElementById('nyancat.gif').style.display = 'block';">
+                  document.getElementById('nyancat.gif').style.display = 'block';" style="display: none;">
       <img id="image-still-nyancat.gif" class="still" src="/static/gifs/still-nyancat.gif">
       <img class="play" src="/static/gifs/play.gif">
     </div>
@@ -222,9 +219,8 @@ You can convert the above CSS to
 </div>
 ```
 
-> **Note:** The `padding-top` is added to maintain the aspect ratio for responsive images.
-> This is to prevent elements from jumping up when the gifs is loaded as a height cannot be
-> determined.
+> **Note:** `padding-top` is calculated using the aspect ratio of the image. The embedded container
+> is given enough room to responsively contain the children images and containers.
 
 ## Troubleshooting
 

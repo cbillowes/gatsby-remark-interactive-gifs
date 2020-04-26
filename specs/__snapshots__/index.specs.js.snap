@@ -38,14 +38,14 @@ Object {
   "type": "html",
   "value": "
       <div class=\\"interactive-gif \\">
-        <div>
+        <div class=\\"embedded\\" style=\\"padding-top: 83.6%\\">
           <div id=\\"loading-dolphin.gif\\"
-              class=\\"loading\\" style=\\"max-height: 418px; background-size: cover; background-image: url('/static/gifs/still-dolphin.gif');\\">
+              class=\\"loading\\" style=\\"background-size: cover; background-image: url('/static/gifs/still-dolphin.gif');\\">
               <img class=\\"indicator\\" src=\\"/static/gifs/loading.gif\\" />
           </div>
           <div id=\\"dolphin.gif\\"
               class=\\"gif-container\\"
-              style=\\"display: none; padding-top: 83.6%;\\"
+              style=\\"display: none;\\"
               onclick=\\"document.getElementById('dolphin.gif').style.display = 'none';
                         document.getElementById('still-dolphin.gif').style.display = 'block';\\">
             <img id=\\"image-dolphin.gif\\"
@@ -90,14 +90,14 @@ Object {
   "type": "html",
   "value": "
       <div class=\\"interactive-gif \\">
-        <div>
+        <div class=\\"embedded\\" style=\\"padding-top: 83.6%\\">
           <div id=\\"loading-dolphin.gif\\"
-              class=\\"loading\\" style=\\"max-height: 418px; background-size: cover; background-image: url('/static/gifs/still-dolphin.gif');\\">
+              class=\\"loading\\" style=\\"background-size: cover; background-image: url('/static/gifs/still-dolphin.gif');\\">
               <img class=\\"indicator\\" src=\\"/static/gifs/loading.gif\\" />
           </div>
           <div id=\\"dolphin.gif\\"
               class=\\"gif-container\\"
-              style=\\"display: none; padding-top: 83.6%;\\"
+              style=\\"display: none;\\"
               onclick=\\"document.getElementById('dolphin.gif').style.display = 'none';
                         document.getElementById('still-dolphin.gif').style.display = 'block';\\">
             <img id=\\"image-dolphin.gif\\"
@@ -142,14 +142,14 @@ Object {
   "type": "html",
   "value": "
       <div class=\\"interactive-gif do-not-stretch-me\\">
-        <div>
+        <div class=\\"embedded\\" style=\\"padding-top: 83.6%\\">
           <div id=\\"loading-dolphin.gif\\"
-              class=\\"loading\\" style=\\"max-height: 418px; background-size: cover; background-image: url('/static/gifs/still-dolphin.gif');\\">
+              class=\\"loading\\" style=\\"background-size: cover; background-image: url('/static/gifs/still-dolphin.gif');\\">
               <img class=\\"indicator\\" src=\\"/static/gifs/loading.gif\\" />
           </div>
           <div id=\\"dolphin.gif\\"
               class=\\"gif-container\\"
-              style=\\"display: none; padding-top: 83.6%;\\"
+              style=\\"display: none;\\"
               onclick=\\"document.getElementById('dolphin.gif').style.display = 'none';
                         document.getElementById('still-dolphin.gif').style.display = 'block';\\">
             <img id=\\"image-dolphin.gif\\"
@@ -194,14 +194,14 @@ Object {
   "type": "html",
   "value": "
       <div class=\\"interactive-gif \\">
-        <div>
+        <div class=\\"embedded\\" style=\\"padding-top: 83.6%\\">
           <div id=\\"loading-i-am-a-dolphin\\"
-              class=\\"loading\\" style=\\"max-height: 418px; background-size: cover; background-image: url('/static/gifs/still-dolphin.gif');\\">
+              class=\\"loading\\" style=\\"background-size: cover; background-image: url('/static/gifs/still-dolphin.gif');\\">
               <img class=\\"indicator\\" src=\\"/static/gifs/loading.gif\\" />
           </div>
           <div id=\\"i-am-a-dolphin\\"
               class=\\"gif-container\\"
-              style=\\"display: none; padding-top: 83.6%;\\"
+              style=\\"display: none;\\"
               onclick=\\"document.getElementById('i-am-a-dolphin').style.display = 'none';
                         document.getElementById('still-i-am-a-dolphin').style.display = 'block';\\">
             <img id=\\"image-i-am-a-dolphin\\"
@@ -246,14 +246,14 @@ Object {
   "type": "html",
   "value": "
       <div class=\\"interactive-gif do-not-stretch-me\\">
-        <div>
+        <div class=\\"embedded\\" style=\\"padding-top: 83.6%\\">
           <div id=\\"loading-am-i-a-fishy\\"
-              class=\\"loading\\" style=\\"max-height: 418px; background-size: cover; background-image: url('/static/gifs/still-dolphin.gif');\\">
+              class=\\"loading\\" style=\\"background-size: cover; background-image: url('/static/gifs/still-dolphin.gif');\\">
               <img class=\\"indicator\\" src=\\"/static/gifs/loading.gif\\" />
           </div>
           <div id=\\"am-i-a-fishy\\"
               class=\\"gif-container\\"
-              style=\\"display: none; padding-top: 83.6%;\\"
+              style=\\"display: none;\\"
               onclick=\\"document.getElementById('am-i-a-fishy').style.display = 'none';
                         document.getElementById('still-am-i-a-fishy').style.display = 'block';\\">
             <img id=\\"image-am-i-a-fishy\\"

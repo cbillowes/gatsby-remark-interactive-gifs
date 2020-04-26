@@ -103,14 +103,14 @@ const getNodeHtml = (options) => {
     const responsiveness = (options.height / options.width) * 100
     return `
       <div class="interactive-gif ${options.class}">
-        <div>
+        <div class="embedded" style="padding-top: ${responsiveness}%">
           <div id="loading-${gifElementId}"
-              class="loading" style="max-height: ${options.height}px; background-size: cover; background-image: url('${options.relativePath}/${options.still}');">
+              class="loading" style="background-size: cover; background-image: url('${options.relativePath}/${options.still}');">
               <img class="indicator" src="${options.relativePath}/${options.loading}" />
           </div>
           <div id="${gifElementId}"
               class="gif-container"
-              style="display: none; padding-top: ${responsiveness}%;"
+              style="display: none;"
               onclick="document.getElementById('${gifElementId}').style.display = 'none';
                         document.getElementById('${stillElementId}').style.display = 'block';">
             <img id="image-${gifElementId}"
