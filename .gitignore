@@ -42,5 +42,3 @@ bin/published.js
 .serverless/
 .eslintcache
 
-# lock files
-package-lock.json
