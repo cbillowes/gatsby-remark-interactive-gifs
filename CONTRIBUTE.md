@@ -45,6 +45,6 @@ Steps to releasing a new package: *(notes for future me)*
 
 * `npm run release` to bump the version in package.json, create a release commit and tag it with that version number.
 
-* `git push -u origin --tags` to push the latest changes with the newly created tag.
+* `git push -u origin master --tags` to push the latest changes with the newly created tag.
 
 * `npm publish` latest version of the package to the world.
