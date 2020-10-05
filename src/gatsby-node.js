@@ -195,8 +195,12 @@ exports.sourceNodes = (options, pluginOptions) => {
         return
       }
 
-      copyFiles(files, pluginOptions)
-      files.forEach((filename) => {
+      const gifFiles = files.filter(function(file) {
+        return path.extname(file).toLowerCase() === ".gif";
+      });
+
+      copyFiles(gifFiles, pluginOptions)
+      gifFiles.forEach((filename) => {
         createStill(filename, pluginOptions)
         createSourceNode(filename, options, pluginOptions)
       })
