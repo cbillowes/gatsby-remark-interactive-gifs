@@ -90,7 +90,7 @@ query MyQuery {
 
 ## How to use
 
-Simply reference your gif file name in the gif protocol in order to embed the interactive gif.
+Simply reference your gif file name (relative to the configured `src` directory) in the gif protocol in order to embed the interactive gif.
 
 ```
 `gif:dolphin.gif`
