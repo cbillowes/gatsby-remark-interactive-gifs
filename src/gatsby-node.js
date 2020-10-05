@@ -196,8 +196,8 @@ exports.sourceNodes = (options, pluginOptions) => {
       }
 
       const gifFiles = files.filter(function(file) {
-        return path.extname(file).toLowerCase() === ".gif";
-      });
+        return path.extname(file).toLowerCase() === ".gif"
+      })
 
       copyFiles(gifFiles, pluginOptions)
       gifFiles.forEach((filename) => {
