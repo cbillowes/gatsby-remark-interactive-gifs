@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 A Gatsby plugin to add interactive animated gifs to markdown files.
-[Check it out!](https://github.com/cbillowes/gatsby-remark-interactive-gifs)
+[Check it out!](https://gifs.curiousprogrammer.dev/)
 
 ## Install
 
