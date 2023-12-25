@@ -1,6 +1,7 @@
 # Build files
 /gatsby-node.js
 /index.js
+/build.sh
 
 # Runtime data
 pids
