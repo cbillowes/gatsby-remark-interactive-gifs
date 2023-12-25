@@ -5,13 +5,8 @@
   "main": "index.js",
   "scripts": {
     "build": "rimraf gatsby-node.js index.js && cross-env BABEL_ENV=production babel src --out-dir .",
-    "format": "prettier --write ./{src,specs}/{,**}/*.js",
-    "lint": "eslint ./{src,specs}/{,**}/*.js",
-    "test": "jest --colors",
-    "test:snapshots": "jest -u --colors",
-    "test:watch": "jest --watch --colors",
-    "test:verbose": "jest --verbose --colors",
-    "test:coverage": "jest --coverage --runInBand --no-cache",
+    "format": "prettier --write ./{src}/{,**}/*.js",
+    "lint": "eslint ./{src}/{,**}/*.js",
     "release": "yarn run build && ./node_modules/.bin/standard-version"
   },
   "author": {
@@ -52,9 +47,8 @@
     "@babel/plugin-transform-runtime": "^7.23.6",
     "@babel/preset-env": "^7.23.6",
     "@babel/preset-react": "^7.23.3",
-    "@types/jest": "^29.5.11",
-    "babel-jest": "^29.7.0",
     "babel-plugin-add-module-exports": "^1.0.4",
+    "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
     "cross-env": "^7.0.3",
     "jest": "^29.7.0",
     "remark": "^15.0.1",
@@ -62,37 +56,9 @@
     "standard-version": "^9.5.0"
   },
   "peerDependencies": {
-    "gatsby": "*",
-    "gatsby-transformer-remark": "*",
-    "react": "*"
-  },
-  "jest": {
-    "transform": {
-      "^.+\\.jsx?$": "babel-jest"
-    },
-    "transformIgnorePatterns": [
-      "/node_modules/"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "jsx",
-      "ts",
-      "tsx"
-    ],
-    "testMatch": [
-      "**/specs/**/*[.-][Ss]pec{,s}.{j,t}s{,x}"
-    ],
-    "rootDir": ".",
-    "verbose": true,
-    "resetMocks": true,
-    "resetModules": true,
-    "collectCoverageFrom": [
-      "src/*.{j,t}s{,x}",
-      "!**/*.min.js",
-      "!**/static/**",
-      "!**/specs/**",
-      "!**/node_modules/**"
-    ]
+    "gatsby": ">=5",
+    "gatsby-transformer-remark": ">=6",
+    "react": ">=18"
   },
   "babel": {
     "presets": [
