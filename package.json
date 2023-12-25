@@ -1,6 +1,6 @@
 {
   "name": "gatsby-remark-interactive-gifs",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A Gatsby plugin to add interactive animated gifs to markdown files.",
   "main": "index.js",
   "scripts": {
