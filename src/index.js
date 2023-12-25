@@ -1,6 +1,6 @@
-const path = require(`path`)
-const visit = require(`async-unist-util-visit`)
-const img = require(`image-size`)
+const path = require(`path`);
+const visit = require(`async-unist-util-visit`);
+const img = require(`image-size`);
 
 /**
  * @typedef {object} PluginOptions
@@ -33,30 +33,30 @@ const img = require(`image-size`)
  * @returns {boolean}
  */
 const matchesProtocol = (value) => {
-  return value.startsWith(`gif:`)
-}
+  return value.startsWith(`gif:`);
+};
 
 /**
  * @param {string} value the inline code being parsed
  * @returns {object}
  */
 const parseProtocol = (value) => {
-  const params = value.split(`:`)
-  const gif = params[1]
-  const options = (params.length > 2 ? params[2] : ``).split(`;`)
+  const params = value.split(`:`);
+  const gif = params[1];
+  const options = (params.length > 2 ? params[2] : ``).split(`;`);
 
   let protocol = {
     gif,
     id: gif,
     caption: ``,
     class: ``,
-  }
+  };
   options.forEach((opt) => {
-    const attribs = opt.split(`=`)
-    protocol[attribs[0]] = attribs[1]
-  })
-  return protocol
-}
+    const attribs = opt.split(`=`);
+    protocol[attribs[0]] = attribs[1];
+  });
+  return protocol;
+};
 
 /**
  * @param {PluginOptions} pluginOptions
@@ -64,15 +64,15 @@ const parseProtocol = (value) => {
  * @returns {object}
  */
 const getNodeHtmlOptions = (pluginOptions, params) => {
-  const image = path.join(pluginOptions.dest, params.gif)
-  let dimensions = { width: 0, height: 0 }
-  let exists = false
+  const image = path.join(pluginOptions.dest, params.gif);
+  let dimensions = { width: 0, height: 0 };
+  let exists = false;
 
   try {
-    dimensions = img.imageSize(image)
-    exists = true
+    dimensions = img.imageSize(image);
+    exists = true;
   } catch (e) {
-    console.warn(`${image} does not exist.`)
+    console.warn(`${image} does not exist.`);
   }
 
   return {
@@ -88,8 +88,8 @@ const getNodeHtmlOptions = (pluginOptions, params) => {
     class: params.class,
     width: dimensions.width,
     height: dimensions.height,
-  }
-}
+  };
+};
 
 /**
  * Generates the html to be embedded on the markdown page.
@@ -98,15 +98,19 @@ const getNodeHtmlOptions = (pluginOptions, params) => {
  */
 const getNodeHtml = (options) => {
   if (options.exists) {
-    const gifElementId = options.id
-    const stillElementId = `still-${options.id}`
-    const responsiveness = (options.height / options.width) * 100
+    const gifElementId = options.id;
+    const stillElementId = `still-${options.id}`;
+    const responsiveness = (options.height / options.width) * 100;
     return `
       <div class="interactive-gif ${options.class}">
         <div class="embedded" style="padding-top: ${responsiveness}%">
           <div id="loading-${gifElementId}"
-              class="loading" style="background-size: cover; background-image: url('${options.relativePath}/${options.still}');">
-              <img class="indicator" src="${options.relativePath}/${options.loading}" />
+              class="loading" style="background-size: cover; background-image: url('${
+                options.relativePath
+              }/${options.still}');">
+              <img class="indicator" src="${options.relativePath}/${
+      options.loading
+    }" />
           </div>
           <div id="${gifElementId}"
               class="gif-container"
@@ -133,7 +137,7 @@ const getNodeHtml = (options) => {
         </div>
         <div class="caption">${options.caption ? options.caption : ``}</div>
       </div>
-    `
+    `;
   } else {
     return `
       <div class="interactive-gif">
@@ -141,9 +145,9 @@ const getNodeHtml = (options) => {
           <img src="${options.relativePath}/${options.placeholder}" />
         </div>
       </div>
-    `
+    `;
   }
-}
+};
 
 /**
  * @param {{ markdownAST: any;}} defaultProps
@@ -152,16 +156,16 @@ const getNodeHtml = (options) => {
  */
 module.exports = async ({ markdownAST }, pluginOptions) => {
   return visit(markdownAST, `inlineCode`, (node) => {
-    const value = node.value.toString()
+    const value = node.value.toString();
     if (matchesProtocol(value)) {
-      const params = parseProtocol(value)
-      const options = getNodeHtmlOptions(pluginOptions, params)
-      const html = getNodeHtml(options)
+      const params = parseProtocol(value);
+      const options = getNodeHtmlOptions(pluginOptions, params);
+      const html = getNodeHtml(options);
       node = Object.assign(node, {
         type: `html`,
         value: html,
-      })
+      });
     }
-    return markdownAST
-  })
-}
+    return markdownAST;
+  });
+};

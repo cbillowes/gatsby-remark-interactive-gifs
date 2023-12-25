@@ -1,9 +1,9 @@
-const path = require(`path`)
-const fs = require(`fs-extra`)
-const gifFrames = require(`gif-frames`)
-const sizeOf = require(`image-size`)
+const path = require(`path`);
+const fs = require(`fs-extra`);
+const gifFrames = require(`gif-frames`);
+const sizeOf = require(`image-size`);
 
-let Reporter = console
+let Reporter = console;
 
 /**
  * @typedef {object} PluginOptions
@@ -24,9 +24,9 @@ let Reporter = console
 async function verifyPathExists(option, path) {
   return fs.pathExists(path, (err, exists) => {
     if (err || !exists)
-      Reporter.error(`Path does not exist [${option}]: ${path}`)
-    return exists
-  })
+      Reporter.error(`Path does not exist [${option}]: ${path}`);
+    return exists;
+  });
 }
 
 /**
@@ -40,9 +40,9 @@ const validate = (pluginOptions) => {
     verifyPathExists(`src`, pluginOptions.src),
     verifyPathExists(`play`, pluginOptions.play),
     verifyPathExists(`placeholder`, pluginOptions.placeholder),
-  ]
-  return verifies.every(Boolean)
-}
+  ];
+  return verifies.every(Boolean);
+};
 
 /**
  * Gets that bas64 contents of a file.
@@ -50,8 +50,8 @@ const validate = (pluginOptions) => {
  * @returns {string}
  */
 const getBase64 = (pathAndfilename) => {
-  return Buffer.from(fs.readFileSync(pathAndfilename)).toString(`base64`)
-}
+  return Buffer.from(fs.readFileSync(pathAndfilename)).toString(`base64`);
+};
 
 /**
  * Copy gifs, play and placeholder images from src to dest.
@@ -60,15 +60,15 @@ const getBase64 = (pathAndfilename) => {
  * @returns {void}
  */
 const copyFiles = (files, pluginOptions) => {
-  let copy = files.map((filename) => path.join(pluginOptions.src, filename))
-  copy.push(pluginOptions.play)
-  copy.push(pluginOptions.placeholder)
-  copy.push(pluginOptions.loading)
+  let copy = files.map((filename) => path.join(pluginOptions.src, filename));
+  copy.push(pluginOptions.play);
+  copy.push(pluginOptions.placeholder);
+  copy.push(pluginOptions.loading);
   copy.map((src) => {
-    const dest = path.join(pluginOptions.dest, path.basename(src))
-    fs.copyFile(src, dest)
-  })
-}
+    const dest = path.join(pluginOptions.dest, path.basename(src));
+    fs.copyFile(src, dest);
+  });
+};
 
 /**
  * Create the still image from a gif.
@@ -77,16 +77,16 @@ const copyFiles = (files, pluginOptions) => {
  * @returns {void}
  */
 const createStill = (file, pluginOptions) => {
-  const src = path.join(pluginOptions.src, file)
-  const dest = path.join(pluginOptions.dest, `still-${path.basename(src)}`)
+  const src = path.join(pluginOptions.src, file);
+  const dest = path.join(pluginOptions.dest, `still-${path.basename(src)}`);
 
   // @es-ignore
   gifFrames({ url: src, frames: 0 })
     // @ts-ignore
     .then((frameData) => {
-      frameData[0].getImage().pipe(fs.createWriteStream(dest))
-    })
-}
+      frameData[0].getImage().pipe(fs.createWriteStream(dest));
+    });
+};
 
 /**
  * Gets the relative path of a file from its absolute path.
@@ -95,8 +95,8 @@ const createStill = (file, pluginOptions) => {
  * @returns {string}
  */
 const getRelativePath = (absolutePath, filePath) => {
-  return path.relative(absolutePath, filePath).replace(/public/gi, ``)
-}
+  return path.relative(absolutePath, filePath).replace(/public/gi, ``);
+};
 
 /**
  * Create the node data.
@@ -106,11 +106,11 @@ const getRelativePath = (absolutePath, filePath) => {
  * @returns {object}
  */
 const createNodeData = (filename, base64, pluginOptions) => {
-  const src = path.join(pluginOptions.src, filename)
-  const dest = path.join(pluginOptions.dest, filename)
-  const still = path.join(pluginOptions.dest, `still-${filename}`)
-  const { width, height } = sizeOf.imageSize(src)
-  const root = pluginOptions.root
+  const src = path.join(pluginOptions.src, filename);
+  const dest = path.join(pluginOptions.dest, filename);
+  const still = path.join(pluginOptions.dest, `still-${filename}`);
+  const { width, height } = sizeOf.imageSize(src);
+  const root = pluginOptions.root;
   return {
     absolutePath: dest,
     sourcePath: src,
@@ -119,8 +119,8 @@ const createNodeData = (filename, base64, pluginOptions) => {
     base64,
     width,
     height,
-  }
-}
+  };
+};
 
 /**
  * @param {string} filename
@@ -133,7 +133,7 @@ const createNodeMeta = (
   filename,
   base64,
   createNodeId,
-  createContentDigest
+  createContentDigest,
 ) => {
   return {
     id: createNodeId(`interactive-gif-${filename}`),
@@ -145,8 +145,8 @@ const createNodeMeta = (
       content: filename,
       contentDigest: createContentDigest(base64),
     },
-  }
-}
+  };
+};
 
 /**
  * Creates the source node.
@@ -156,19 +156,19 @@ const createNodeMeta = (
  * @returns {void}
  */
 const createSourceNode = (filename, options, pluginOptions) => {
-  const { actions, createNodeId, createContentDigest } = options
-  const { createNode } = actions
-  const base64 = getBase64(path.join(pluginOptions.src, filename))
-  const data = createNodeData(filename, base64, pluginOptions)
+  const { actions, createNodeId, createContentDigest } = options;
+  const { createNode } = actions;
+  const base64 = getBase64(path.join(pluginOptions.src, filename));
+  const data = createNodeData(filename, base64, pluginOptions);
   const meta = createNodeMeta(
     filename,
     base64,
     createNodeId,
-    createContentDigest
-  )
-  const node = Object.assign(data, meta)
-  createNode(node)
-}
+    createContentDigest,
+  );
+  const node = Object.assign(data, meta);
+  createNode(node);
+};
 
 /**
  * @param {{ reporter: object; }} options
@@ -176,34 +176,34 @@ const createSourceNode = (filename, options, pluginOptions) => {
  * @returns {void}
  */
 exports.sourceNodes = (options, pluginOptions) => {
-  const { reporter } = options
-  Reporter = reporter
+  const { reporter } = options;
+  Reporter = reporter;
 
   if (validate(pluginOptions)) {
     fs.mkdirp(pluginOptions.dest, (err) => {
       if (err)
         Reporter.error(
-          `Cannot make directory [dest]: ${pluginOptions.dest} -> ${err}`
-        )
-    })
+          `Cannot make directory [dest]: ${pluginOptions.dest} -> ${err}`,
+        );
+    });
 
     fs.readdir(pluginOptions.src, (err, files) => {
       if (err) {
         Reporter.error(
-          `Cannot read directory [src]: ${pluginOptions.src} -> ${err}`
-        )
-        return
+          `Cannot read directory [src]: ${pluginOptions.src} -> ${err}`,
+        );
+        return;
       }
 
-      const gifFiles = files.filter(function(file) {
-        return path.extname(file).toLowerCase() === ".gif"
-      })
+      const gifFiles = files.filter(function (file) {
+        return path.extname(file).toLowerCase() === '.gif';
+      });
 
-      copyFiles(gifFiles, pluginOptions)
+      copyFiles(gifFiles, pluginOptions);
       gifFiles.forEach((filename) => {
-        createStill(filename, pluginOptions)
-        createSourceNode(filename, options, pluginOptions)
-      })
-    })
+        createStill(filename, pluginOptions);
+        createSourceNode(filename, options, pluginOptions);
+      });
+    });
   }
-}
+};
